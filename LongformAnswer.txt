@@ -1,0 +1,27 @@
+Planning for failure
+
+Unhappy customer 1
+
+At first i though this might be due to a timeout error on the client side, a lack of a response for too long leading to code not being run. However if we assume that all three unhappy customers happen on the same codebase (as we should) then the second unhappy customer should also have a timeout error
+
+Therefore i think that That there might be an mistake in error/success code handling. If the server replies back with a non 200 success code, and the code doesn't know to show a success message in this scenario. This would be a match. Maybe a 202 code for "Accepted" was sent instead of a 200 "OK" code
+
+This would then be fixed by correctly handling the success code
+
+
+Unhappy customer 2
+
+This could more be an error with a race condition and concurrency i believe. If the server is busy handling a request, maybe there could be an instance where it inserts the data from one client into two seperate clients requests. This would lead to a success message, while still ordering two orders.
+
+This would be fixed with tighter control of threads and concurrency on the server side. making sure there are locks preventing too many requests from entering the system at the same time. 
+
+
+Unhappy customer 3
+
+While this could be seen as a complete user error. After all the user did hit the submit button more than once. This is still a fault of the programmers, due to not checking for this case happening ahead of time. 
+
+I feel this would be simplest fixed by preventing the submit button from activating more than once before the device gets a reply from the server.
+
+
+
+An addition i would also implement in this situation would also to add some sort of progress indicator for the user. Just so the user is not frustrated with the lack of sign of progress in the system or device. Alternatively adding in a message about the large amount of server load could help alleviate frustration from the user.
