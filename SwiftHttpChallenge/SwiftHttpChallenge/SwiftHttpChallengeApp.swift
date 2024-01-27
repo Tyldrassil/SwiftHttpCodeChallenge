@@ -12,7 +12,7 @@ import SwiftUI
 struct SwiftHttpChallengeApp: App {
     var body: some Scene {
         WindowGroup {
-            ContentView()
+            MainView()
         }
     }
 }

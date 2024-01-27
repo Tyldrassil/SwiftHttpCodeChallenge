@@ -8,14 +8,14 @@
 
 /* Begin PBXBuildFile section */
 		7D9EA7D62B64192200B2C05E /* SwiftHttpChallengeApp.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7D9EA7D52B64192200B2C05E /* SwiftHttpChallengeApp.swift */; };
-		7D9EA7D82B64192200B2C05E /* ContentView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7D9EA7D72B64192200B2C05E /* ContentView.swift */; };
 		7D9EA7DC2B64193D00B2C05E /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 7D9EA7DB2B64193D00B2C05E /* Assets.xcassets */; };
 		7D9EA7DF2B64193D00B2C05E /* Preview Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 7D9EA7DE2B64193D00B2C05E /* Preview Assets.xcassets */; };
 		7D9EA7E92B64193E00B2C05E /* SwiftHttpChallengeTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7D9EA7E82B64193E00B2C05E /* SwiftHttpChallengeTests.swift */; };
 		7D9EA7F32B64193E00B2C05E /* SwiftHttpChallengeUITests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7D9EA7F22B64193E00B2C05E /* SwiftHttpChallengeUITests.swift */; };
 		7D9EA7F52B64193E00B2C05E /* SwiftHttpChallengeUITestsLaunchTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7D9EA7F42B64193E00B2C05E /* SwiftHttpChallengeUITestsLaunchTests.swift */; };
-		7D9EA8022B641B0400B2C05E /* InputView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7D9EA8012B641B0400B2C05E /* InputView.swift */; };
+		7D9EA8022B641B0400B2C05E /* MainView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7D9EA8012B641B0400B2C05E /* MainView.swift */; };
 		7D9EA8052B64361000B2C05E /* Logic.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7D9EA8042B64361000B2C05E /* Logic.swift */; };
+		7D9EA8082B652CBD00B2C05E /* WikipediaJSON.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7D9EA8072B652CBD00B2C05E /* WikipediaJSON.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -38,7 +38,6 @@
 /* Begin PBXFileReference section */
 		7D9EA7D22B64192200B2C05E /* SwiftHttpChallenge.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = SwiftHttpChallenge.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		7D9EA7D52B64192200B2C05E /* SwiftHttpChallengeApp.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SwiftHttpChallengeApp.swift; sourceTree = "<group>"; };
-		7D9EA7D72B64192200B2C05E /* ContentView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ContentView.swift; sourceTree = "<group>"; };
 		7D9EA7DB2B64193D00B2C05E /* Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Assets.xcassets; sourceTree = "<group>"; };
 		7D9EA7DE2B64193D00B2C05E /* Preview Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = "Preview Assets.xcassets"; sourceTree = "<group>"; };
 		7D9EA7E42B64193E00B2C05E /* SwiftHttpChallengeTests.xctest */ = {isa = PBXFileReference; explicitFileType = wrapper.cfbundle; includeInIndex = 0; path = SwiftHttpChallengeTests.xctest; sourceTree = BUILT_PRODUCTS_DIR; };
@@ -46,8 +45,9 @@
 		7D9EA7EE2B64193E00B2C05E /* SwiftHttpChallengeUITests.xctest */ = {isa = PBXFileReference; explicitFileType = wrapper.cfbundle; includeInIndex = 0; path = SwiftHttpChallengeUITests.xctest; sourceTree = BUILT_PRODUCTS_DIR; };
 		7D9EA7F22B64193E00B2C05E /* SwiftHttpChallengeUITests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SwiftHttpChallengeUITests.swift; sourceTree = "<group>"; };
 		7D9EA7F42B64193E00B2C05E /* SwiftHttpChallengeUITestsLaunchTests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SwiftHttpChallengeUITestsLaunchTests.swift; sourceTree = "<group>"; };
-		7D9EA8012B641B0400B2C05E /* InputView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = InputView.swift; sourceTree = "<group>"; };
+		7D9EA8012B641B0400B2C05E /* MainView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MainView.swift; sourceTree = "<group>"; };
 		7D9EA8042B64361000B2C05E /* Logic.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Logic.swift; sourceTree = "<group>"; };
+		7D9EA8072B652CBD00B2C05E /* WikipediaJSON.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = WikipediaJSON.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -98,9 +98,9 @@
 		7D9EA7D42B64192200B2C05E /* SwiftHttpChallenge */ = {
 			isa = PBXGroup;
 			children = (
+				7D9EA8062B652CA000B2C05E /* Data */,
 				7D9EA7D52B64192200B2C05E /* SwiftHttpChallengeApp.swift */,
-				7D9EA7D72B64192200B2C05E /* ContentView.swift */,
-				7D9EA8012B641B0400B2C05E /* InputView.swift */,
+				7D9EA8012B641B0400B2C05E /* MainView.swift */,
 				7D9EA7DB2B64193D00B2C05E /* Assets.xcassets */,
 				7D9EA7DD2B64193D00B2C05E /* Preview Content */,
 				7D9EA8042B64361000B2C05E /* Logic.swift */,
@@ -131,6 +131,14 @@
 				7D9EA7F42B64193E00B2C05E /* SwiftHttpChallengeUITestsLaunchTests.swift */,
 			);
 			path = SwiftHttpChallengeUITests;
+			sourceTree = "<group>";
+		};
+		7D9EA8062B652CA000B2C05E /* Data */ = {
+			isa = PBXGroup;
+			children = (
+				7D9EA8072B652CBD00B2C05E /* WikipediaJSON.swift */,
+			);
+			path = Data;
 			sourceTree = "<group>";
 		};
 /* End PBXGroup section */
@@ -266,9 +274,9 @@
 			buildActionMask = 2147483647;
 			files = (
 				7D9EA8052B64361000B2C05E /* Logic.swift in Sources */,
-				7D9EA8022B641B0400B2C05E /* InputView.swift in Sources */,
-				7D9EA7D82B64192200B2C05E /* ContentView.swift in Sources */,
+				7D9EA8022B641B0400B2C05E /* MainView.swift in Sources */,
 				7D9EA7D62B64192200B2C05E /* SwiftHttpChallengeApp.swift in Sources */,
+				7D9EA8082B652CBD00B2C05E /* WikipediaJSON.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
