@@ -1,28 +1,40 @@
 Planning for failure
 
+
+First i feel it is important to lay out how i think the process works from client to payment api
+
+Front end					Back end				Payment Processing
+
+User hits submit -->
+						backend messages API -->
+												API processes payment
+											<-- API Responds
+						backend creates order in DB
+					<-- backend notifies to FE
+UI Updates for User
+
+
 Unhappy customer 1
 
-At first i though this might be due to a timeout error on the client side, a lack of a response for too long leading to code not being run. However if we assume that all three unhappy customers happen on the same codebase (as we should) then the second unhappy customer should also have a timeout error
+For this customer something seems to be happening to the last step of the above process. There is no notification being displayed to the user regarding the order. This could be for instance due to the Front end timing out before the backend has a chance to send a message back to the front end
 
-Therefore i think that That there might be an mistake in error/success code handling. If the payment API replies back with a non 200 success code, and your code doesn't know to show a success message in this scenario. This would be a match. Maybe a 202 code for "Accepted" was sent due to the server load instead of a 200 "OK" code
-
-This would then be fixed by correctly handling the success code
+This could be solved by creating a message for the user about processing taking some extra time, or more messages coming back from the backend regarding the status of the entire process. 
 
 
 Unhappy customer 2
 
-I imagine that this could be due to a race condition. If the front end of the website sends a request to the backend of the website at the exact wrong moment, the customers payment data could be used for two separate calls to the payment API, resulting in two charges.
+This scenario seems to have something going wrong with the third step of the process, where the backend may have timed out, and then attempted to send the data to the payment API again, leading to a double charge. This could be due to error codes from the payment process not being good enough, possibly a 202 accepted was not handled properly.
 
-This would be solved by keeping a greater control on the backend of the server concurrency to make sure these race conditions are possible.
-
+This could be solved by changing the behaviour of the backend in regards to slow behaviour from the payment processing. Instead of attempting again, it would take the safer route and time out, or request an update from the payment process on if it received the payment information or not.
 
 
 Unhappy customer 3
 
-While this could be seen as a complete user error. After all the user did hit the submit button more than once. This is still a fault of the programmers, due to not checking for this case happening ahead of time. 
+This customer could be in the same scenario as the first customer. This could be happening due to the user attempting to submit twice for the same item, creating two parallel runs of the process above. This leading to two payments, while only one copy of the order has been submitted to the Database.
 
-This wouldn't create two orders in the system, due to creating an identical addition to the database, possibly overwriting the previous instance
+A solution for this could be to stop the submit button from activating after hitting it the first time, but before getting a response from the backend again. 
 
-I feel this would be simplest fixed by preventing the submit button from activating more than once before the device gets a reply from the server.
+A check could also be made on the back end side to make sure the same user cannot make the same order before getting a response from the payment API beforehand.
 
-An addition i would also implement in this situation would also to add some sort of progress indicator for the user. Just so the user is not frustrated with the lack of sign of progress in the system or device. Alternatively adding in a message about the large amount of server load could help alleviate frustration from the user.
+
+In the end, some of these problems could be solved by doing more error checking, and letting the customer know some of what is going on in terms of what is being waited on. Maybe some sort of notification letting the customer know the payment API is very busy that day.
