@@ -48,7 +48,7 @@ struct MainView: View {
         
         let url = URL(string: urlPath)!
         
-        //This builds a request for the raw data from the page. At this point we could either write code to get the data parsed as JSON, or use this solution.
+        //Will parse the code as JSON
         let task = URLSession.shared.dataTask(with: url) {(data, response, error) in
             if let error = error {
                 print(error)
@@ -59,6 +59,8 @@ struct MainView: View {
             do {
                 //print(data)
                 let res = try JSONDecoder().decode(EnclosingJSON.self, from: data)
+                
+                //debug print message
                 print(
                     subStringCounter(
                         fullString: res.parse.text.text,
